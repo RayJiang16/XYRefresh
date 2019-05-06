@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Refresh
+
+  Created by RayJiang on 2019/4/26.
+  Copyright © 2019 RayJaing. All rights reserved.
+*/
+
+"RefreshHeaderIdleText" = "Pull down to refresh";
+"RefreshHeaderPullingText" = "Release to refresh";
+
+"RefreshAutoFooterIdleText" = "Pull up to load more";
+"RefreshAutoFooterPullingText" = "Release to load more.";
+"RefreshAutoFooterNoMoreDataText" = "No more data";

@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Refresh
+
+  Created by RayJiang on 2019/4/26.
+  Copyright © 2019 RayJaing. All rights reserved.
+*/
+
+"RefreshHeaderIdleText" = "下拉刷新";
+"RefreshHeaderPullingText" = "鬆開刷新";
+
+"RefreshAutoFooterIdleText" = "上拉加載更多";
+"RefreshAutoFooterPullingText" = "鬆開立即加載更多";
+"RefreshAutoFooterNoMoreDataText" = "已經全部加載完畢";
