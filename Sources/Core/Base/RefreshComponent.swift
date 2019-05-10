@@ -34,7 +34,7 @@ open class RefreshComponent: UIView {
     /// 自动修改透明度
     public var automaticallyChangeAlpha: Bool = false
     public var scrollViewOriginalInset: UIEdgeInsets = .zero
-    public var isRefreshing: Bool { return state == .refreshing }
+    public var isRefreshing: Bool { return state == .refreshing || state == .willRefresh }
     public var pullingPercent: CGFloat = 0.0 {
         didSet {
             if isRefreshing { return }
@@ -80,6 +80,13 @@ open class RefreshComponent: UIView {
         newSuperview.alwaysBounceVertical = true
         scrollViewOriginalInset = newSuperview.inset
         addObservers()
+    }
+    
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        if state == .willRefresh {
+            state = .refreshing
+        }
     }
     
     // MARK: - KVC
@@ -147,6 +154,11 @@ open class RefreshComponent: UIView {
         pullingPercent = 1.0
         if window != nil {
             state = .refreshing
+        } else {
+            if state != .refreshing {
+                state = .willRefresh
+                setNeedsDisplay()
+            }
         }
     }
     

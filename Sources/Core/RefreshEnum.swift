@@ -12,5 +12,6 @@ public enum RefreshState {
     case idle
     case pulling
     case refreshing
+    case willRefresh
     case noMoreData
 }
