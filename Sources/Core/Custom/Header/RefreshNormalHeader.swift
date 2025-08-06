@@ -10,7 +10,7 @@ import UIKit
 
 open class RefreshNormalHeader: RefreshStateHeader {
     
-    private lazy var arrowImageView: UIImageView = {
+    public private(set) lazy var arrowImageView: UIImageView = {
         let view = UIImageView(image: BundleHelper.arrowImage)
         addSubview(view)
         return view

@@ -32,11 +32,11 @@ TODO: Add long description of the pod here.
   s.swift_version = '5.0'
 
   s.source_files = 'Sources/Core/**/*.swift'
-  s.resources = "Sources/Core/Resource/**/*"
+  #s.resources = "Sources/Core/Resource/**/*"
 
-  # s.resource_bundles = {
-  #   'Refresh' => ['Sources/Core/Resource/**/*']
-  # }
+  s.resource_bundles = {
+    'XYRefresh' => ['Sources/Core/Resource/**/*']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'UIKit'

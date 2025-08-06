@@ -31,7 +31,7 @@ struct BundleHelper {
     
     static var arrowImage: UIImage? {
         if _arrowImage == nil {
-            _arrowImage = UIImage(named: "arrow", in: bundle, compatibleWith: nil)
+            _arrowImage = Bundle.image(named: "arrow")
         }
         return _arrowImage
     }
@@ -44,5 +44,22 @@ struct BundleHelper {
         var value = value
         value = languageBundle?.localizedString(forKey: key, value: value, table: nil)
         return Bundle.main.localizedString(forKey: key, value: value, table: nil)
+    }
+}
+
+extension Bundle {
+    
+    private class _BundleClass { }
+    
+    static let current: Bundle = {
+        let bundle = Bundle(for: _BundleClass.self)
+        guard let url = bundle.url(forResource: "XYRefresh", withExtension: "bundle"), let resource = Bundle(url: url) else {
+            return bundle
+        }
+        return resource
+    }()
+    
+    static func image(named: String) -> UIImage? {
+        return UIImage(named: named, in: current, compatibleWith: nil)
     }
 }
