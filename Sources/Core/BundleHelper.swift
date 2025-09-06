@@ -10,7 +10,7 @@ import UIKit
 
 struct BundleHelper {
     
-    static var bundle = Bundle(for: RefreshComponent.self)
+    static var bundle = Bundle.current
     static private var _languageBundle: Bundle?
     static private var _arrowImage: UIImage?
     
@@ -41,8 +41,19 @@ struct BundleHelper {
     }
     
     static func localizedString(key: String, value: String?) -> String {
-        var value = value
-        value = languageBundle?.localizedString(forKey: key, value: value, table: nil)
+        // 优先使用 languageBundle（针对特定 .lproj），找不到再使用资源 bundle，最后回退到 main bundle
+        if let langBundle = languageBundle {
+            let localized = langBundle.localizedString(forKey: key, value: nil, table: nil)
+            if localized != key {
+                return localized
+            }
+        }
+        
+        let resourceLocalized = bundle.localizedString(forKey: key, value: value, table: nil)
+        if resourceLocalized != key {
+            return resourceLocalized
+        }
+        
         return Bundle.main.localizedString(forKey: key, value: value, table: nil)
     }
 }
